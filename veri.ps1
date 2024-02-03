@@ -3,14 +3,14 @@ function Update-WingetV {
         [string]$Url = 'https://api.github.com/repos/microsoft/winget-cli/releases/latest'
     )
 
-    $CurrentVersion = winget --Version
+ 
     $latestRelease = (Invoke-WebRequest -Uri $URL).Content | ConvertFrom-Json |
         Select-Object -ExpandProperty "assets" |
         Where-Object "browser_download_url" -Match '.msixbundle' |
         Select-Object -ExpandProperty "browser_download_url"
     $latestVersion = $latestRelease.tag_name
     $userHomeDirectory = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::UserProfile)
-    $
+    $CurrentVersion = winget --Version
     if ($CurrentVersion -ge $latestVersion) {
         Write-Host "Winget is up to date, Version is $CurrentVersion"
     } else {
