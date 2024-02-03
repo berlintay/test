@@ -30,12 +30,9 @@ function Update-WingetV {
     }
 }
 
-function Update-VC {
-    [string]$checkvc = winget -show Microsoft.VCRedist.2015+.x64
 
-    if ($checkvc -ge $checkvc)
 
-}
+
 
 
 $GitHubRepoOwner = "microsoft"
